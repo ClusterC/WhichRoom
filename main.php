@@ -1,40 +1,38 @@
-<!-- -- ตารางที่ 1: room_details ใช้เก็บข้อมูลของห้อง
-CREATE TABLE room_details (
-    room_id INT AUTO_INCREMENT PRIMARY KEY,
-    room_name VARCHAR(255) NOT NULL,
-    capacity INT,
-    has_plug BOOLEAN,
-    has_computer BOOLEAN,
-    room_size ENUM('small', 'medium', 'large')
-);
-
--- ตารางที่ 2: room_status ใช้สำหรับแสดงสถานะของห้องว่ามีเรียนหรือว่าง
-CREATE TABLE room_status (
-    status_id INT AUTO_INCREMENT PRIMARY KEY,
-    room_id INT,
-    day ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
-    start_time TIME NOT NULL,
-    end_time TIME NOT NULL,
-    status ENUM('available', 'occupied') NOT NULL,
-    FOREIGN KEY (room_id) REFERENCES room_details(room_id)
-);
-
--- ตารางที่ 3: reserved_status แยกสถานะการจองออกมาต่างหากแบบ boolean โดยใช้ room_id
-CREATE TABLE reserved_status (
-    room_id INT PRIMARY KEY,
-    is_reserved BOOLEAN DEFAULT 0,
-    FOREIGN KEY (room_id) REFERENCES room_details(room_id)
-
--- ตารางที่ 4: users ใช้สำหรับเก็บข้อมูลผู้ใช้
-CREATE TABLE users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255),
-    password VARCHAR(255),
-    role ENUM('admin', 'user')
-); -->
-
-
 <?php
+// -- ตารางที่ 1: room_details ใช้เก็บข้อมูลของห้อง
+// CREATE TABLE room_details (
+//     room_id INT AUTO_INCREMENT PRIMARY KEY,
+//     room_name VARCHAR(255) NOT NULL,
+//     capacity INT,
+//     has_plug BOOLEAN,
+//     has_computer BOOLEAN,
+//     room_size ENUM('small', 'medium', 'large')
+// );
+
+// -- ตารางที่ 2: room_status ใช้สำหรับแสดงสถานะของห้องว่ามีเรียนหรือว่าง
+// CREATE TABLE room_status (
+//     status_id INT AUTO_INCREMENT PRIMARY KEY,
+//     room_id INT,
+//     day ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+//     start_time TIME NOT NULL,
+//     end_time TIME NOT NULL,
+//     status ENUM('available', 'occupied') NOT NULL,
+//     FOREIGN KEY (room_id) REFERENCES room_details(room_id)
+// );
+
+// -- ตารางที่ 3: reserved_status แยกสถานะการจองออกมาต่างหากแบบ boolean โดยใช้ room_id
+// CREATE TABLE reserved_status (
+//     room_id INT PRIMARY KEY,
+//     is_reserved BOOLEAN DEFAULT 0,
+//     FOREIGN KEY (room_id) REFERENCES room_details(room_id)
+
+// -- ตารางที่ 4: users ใช้สำหรับเก็บข้อมูลผู้ใช้
+// CREATE TABLE users (
+//     user_id INT AUTO_INCREMENT PRIMARY KEY,
+//     username VARCHAR(255),
+//     password VARCHAR(255),
+//     role ENUM('admin', 'user')
+// );
 session_start(); // <<--- เริ่มต้น Session เพื่อตรวจสอบการล็อกอิน
 date_default_timezone_set('Asia/Bangkok');
 
